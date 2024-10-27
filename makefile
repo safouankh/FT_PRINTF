@@ -1,8 +1,7 @@
 SRC =	ft_printf.c \
 		ft_putchar.c \
 		ft_putstr.c \
-		ft_putnbr.c \
-		ft_putfloat.c
+		ft_putnbr.c
 CC = gcc
 CFLAGS = -W -W -W
 OGB = $(SRC:.c=.o)
@@ -15,9 +14,9 @@ $(NAME): $(OGB)
 	ranlib $(NAME)
 
 clean:
-	@rm *.o
+	@rm -rf $(OGB)
 
 fclean: clean
-	@rm *.a
+	@rm -rf $(NAME)
 
 re: fclean all

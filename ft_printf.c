@@ -6,7 +6,7 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:11:05 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/26 17:50:32 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/10/27 13:50:31 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,8 @@ int ft_printf(const char *s, ...)
             }else if(s[i] == '%'){
                 ft_putchar(s[i]);
                 i++;
-            }else if(s[i] == 'i'){
+            }else if(s[i] == 'i' || s[i] == 'd'){
                 ft_putnbr(va_arg(args, int));
-                i++;
-            }else if(s[i] == 'd'){
-                ft_putfloat(va_arg(args, double));
                 i++;
             }
         }else{
