@@ -6,7 +6,7 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:11:05 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/27 13:50:31 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/10/27 14:52:03 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@ int ft_printf(const char *s, ...)
                 i++;
             }else if(s[i] == 'i' || s[i] == 'd'){
                 ft_putnbr(va_arg(args, int));
+                i++;
+            }else if(s[i] == 'u'){
+                ft_putunbr(va_arg(args, unsigned int));
                 i++;
             }
         }else{

@@ -1,7 +1,8 @@
 SRC =	ft_printf.c \
 		ft_putchar.c \
 		ft_putstr.c \
-		ft_putnbr.c
+		ft_putnbr.c \
+		ft_putunbr.c
 CC = gcc
 CFLAGS = -W -W -W
 OGB = $(SRC:.c=.o)

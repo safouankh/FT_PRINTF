@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putunbr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/26 12:06:05 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/27 14:52:14 by sael-kha         ###   ########.fr       */
+/*   Created: 2024/10/27 14:44:00 by sael-kha          #+#    #+#             */
+/*   Updated: 2024/10/27 14:50:45 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINTF_H
-# define PRINTF_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdarg.h>
-
-int ft_printf(const char *s, ...);
-char ft_putchar(char c);
-char *ft_putstr(char *s);
-void    ft_putnbr(int nbr);
-void    ft_putunbr(unsigned int nbr);
-
-#endif
+void    ft_putunbr(unsigned int nbr)
+{
+    if (nbr > 9)
+        ft_putunbr(nbr / 10);
+    ft_putchar(nbr % 10 + '0');
+}
