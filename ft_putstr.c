@@ -6,13 +6,13 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:32:36 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/26 13:44:52 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/10/28 18:05:09 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char *ft_putstr(char *s)
+char *ft_putstr(const char *s)
 {
     int i = 0;
     while(s[i] != '\0')

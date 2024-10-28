@@ -4,10 +4,10 @@ SRC =	ft_printf.c \
 		ft_putnbr.c \
 		ft_putunbr.c \
 		ft_puthex.c
-CC = gcc
+CC = cc
 CFLAGS = -W -W -W
 OGB = $(SRC:.c=.o)
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 all: $(NAME)
 
