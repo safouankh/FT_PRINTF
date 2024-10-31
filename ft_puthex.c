@@ -6,51 +6,62 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:05:37 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/28 16:29:03 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:17:05 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/*
-void    ft_puthex(unsigned int nbr, char type)
+
+void	ft_puthex(unsigned long n, char format)
 {
-    unsigned int reminder;
-    char hex[20];
-    int i;
-
-    i = 0;
-    if (nbr < 0)
-        nbr *= -1;
-    if (nbr == 0)
-    {
-        ft_putchar('0');
-        return ;
-    }
-    while(nbr)
-    {
-        reminder = nbr % 16;
-        if (reminder < 10)
-        {
-            hex[i] = reminder + '0';
-        }else
-        {
-            hex[i] = (reminder - 10) + type;
-        }
-        nbr /= 16;
-        i++;
-    }
-    while (--i >= 0)
-        ft_putchar(hex[i]);
+	if (n >= 16)
+	{
+		ft_puthex(n / 16, format);
+	}
+	if (format == 'a')
+	{
+		write(1, &"0123456789abcdef"[n % 16], 1);
+	}
+	else
+	{
+		write(1, &"0123456789ABCDEF"[n % 16], 1);
+	}
 }
-*/
 
-void ft_puthex(unsigned long n, char format) {
-    if (n >= 16) {
-        ft_puthex(n / 16, format);
-    }
-    if (format == 'a') {
-        write(1, &"0123456789abcdef"[n % 16], 1); // Lowercase
-    } else {
-        write(1, &"0123456789ABCDEF"[n % 16], 1); // Uppercase
-    }
+size_t	calculate_hex_length(unsigned long ptr)
+{
+	size_t	hex_length;
+
+	hex_length = 0;
+	while (ptr)
+	{
+		ptr /= 16;
+		hex_length++;
+	}
+	if (hex_length == 0)
+		hex_length = 1;
+	return (hex_length);
+}
+
+int	printp(void *nbr)
+{
+	unsigned long	ptr;
+	size_t			count;
+	size_t			hex_length;
+
+	ptr = (unsigned long)nbr;
+	if (nbr == NULL)
+	{
+		write(1, "0x0", 3);
+		count = 3;
+	}
+	else
+	{
+		write(1, "0x", 2);
+		count = 2;
+		hex_length = calculate_hex_length(ptr);
+		ft_puthex((unsigned long)nbr, 'a');
+		count += hex_length;
+	}
+	return (count);
 }
