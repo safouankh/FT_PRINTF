@@ -6,7 +6,7 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:11:05 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/11/01 11:09:29 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/11/01 13:19:19 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ft_printf(const char *s, ...)
 
 	i = 0;
 	count = 0;
+	if (write(1, "", 0) == -1)
+		return (-1);
 	va_start(args, s);
 	while (s[i])
 	{
