@@ -6,27 +6,27 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:11:05 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/11/01 13:19:19 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/11/01 15:14:46 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	handle_format(const char *s, int *i, va_list args)
+static int	handle_format(const char *s, int i, va_list args)
 {
-	if (s[*i] == 's')
+	if (s[i] == 's')
 		return (prints(va_arg(args, char *)));
-	if (s[*i] == 'c')
+	if (s[i] == 'c')
 		return (printc(va_arg(args, int)));
-	if (s[*i] == 'p')
+	if (s[i] == 'p')
 		return (printp(va_arg(args, void *)));
-	if (s[*i] == 'i' || s[*i] == 'd')
+	if (s[i] == 'i' || s[i] == 'd')
 		return (printid(va_arg(args, int)));
-	if (s[*i] == 'u')
+	if (s[i] == 'u')
 		return (printu(va_arg(args, unsigned int)));
-	if (s[*i] == 'x' || s[*i] == 'X')
-		return (printx(va_arg(args, unsigned int), s[*i]));
-	if (s[*i] == '%')
+	if (s[i] == 'x' || s[i] == 'X')
+		return (printx(va_arg(args, unsigned int), s[i]));
+	if (s[i] == '%')
 		return (write(1, "%", 1));
 	return (0);
 }
@@ -47,11 +47,12 @@ int	ft_printf(const char *s, ...)
 		if (s[i] == '%' && s[i + 1])
 		{
 			i++;
-			count += handle_format(s, &i, args);
+			count += handle_format(s, i, args);
 		}
 		else
 			count += write(1, &s[i], 1);
 		i++;
 	}
-	return (va_end(args), count);
+	va_end(args);
+	return (count);
 }
