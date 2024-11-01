@@ -6,13 +6,13 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:32:36 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/31 18:17:50 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/11/01 11:51:27 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_putstr(const char *s)
+void	ft_putstr(const char *s)
 {
 	int	i;
 
@@ -22,7 +22,6 @@ char	*ft_putstr(const char *s)
 		ft_putchar(s[i]);
 		i++;
 	}
-	return (0);
 }
 
 int	prints(const char *str)
