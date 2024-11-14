@@ -6,20 +6,21 @@ SRC =	ft_printf.c \
 		ft_puthex.c \
 		ft_hexhelper.c
 CC = cc
-CFLAGS = -W -W -W
+CFLAGS = -Wall -Wextra -Werror
 OGB = $(SRC:.c=.o)
 NAME = libftprintf.a
 
 all: $(NAME)
 
 $(NAME): $(OGB)
-	@ar rc $(NAME) $(OGB)
-	@ranlib $(NAME)
+	ar rcs $(NAME) $(OGB)
 
+%.o:%.c ft_printf.h
+	$(CC) $(CFLAGS) -c $< -o $@
 clean:
-	@rm -rf $(OGB)
+	rm -f $(OGB)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
