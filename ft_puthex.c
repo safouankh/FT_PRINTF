@@ -6,7 +6,7 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 15:05:37 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/10/31 18:17:05 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/11/15 11:15:16 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,7 @@ size_t	calculate_hex_length(unsigned long ptr)
 		ptr /= 16;
 		hex_length++;
 	}
-	if (hex_length == 0)
-		hex_length = 1;
+	hex_length += (hex_length == 0);
 	return (hex_length);
 }
 
