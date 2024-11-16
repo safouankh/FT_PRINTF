@@ -6,7 +6,7 @@
 /*   By: sael-kha <sael-kha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 12:11:05 by sael-kha          #+#    #+#             */
-/*   Updated: 2024/11/14 11:03:58 by sael-kha         ###   ########.fr       */
+/*   Updated: 2024/11/16 12:26:46 by sael-kha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_printf(const char *s, ...)
 				count += handle_format(s, i, args);
 			}
 		}
-		else
+		else if (s[i] != '%')
 			count += write(1, &s[i], 1);
 		i++;
 	}
